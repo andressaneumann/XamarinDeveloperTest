@@ -1,0 +1,8 @@
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\bin\Debug\netstandard2.0\DevelopmentTest.deps.json
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\bin\Debug\netstandard2.0\DevelopmentTest.dll
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.csprojAssemblyReference.cache
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.csproj.CoreCompileInputs.cache
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.AssemblyInfoInputs.cache
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.AssemblyInfo.cs
