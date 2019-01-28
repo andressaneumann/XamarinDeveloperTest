@@ -403,7 +403,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Forms": "3.1.0.697729",
+          "Xamarin.Forms": "3.4.0.1009999",
           "sqlite-net-pcl": "1.5.231"
         },
         "compile": {

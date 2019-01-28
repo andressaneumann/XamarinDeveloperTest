@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevelopmentTest.View;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace DevelopmentTest
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LoginScreen();
         }
 
         protected override void OnStart()

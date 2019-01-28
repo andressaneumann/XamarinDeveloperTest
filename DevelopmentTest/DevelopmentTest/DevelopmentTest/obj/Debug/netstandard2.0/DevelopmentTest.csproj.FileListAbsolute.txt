@@ -6,3 +6,8 @@ C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\
 C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.csproj.CoreCompileInputs.cache
 C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.AssemblyInfoInputs.cache
 C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.AssemblyInfo.cs
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\bin\Debug\netstandard2.0\DevelopmentTest.pdb
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.dll
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\DevelopmentTest.pdb
+C:\Xamarin\XamarinDeveloperTest\DevelopmentTest\DevelopmentTest\DevelopmentTest\obj\Debug\netstandard2.0\View\LoginScreen.xaml.g.cs
