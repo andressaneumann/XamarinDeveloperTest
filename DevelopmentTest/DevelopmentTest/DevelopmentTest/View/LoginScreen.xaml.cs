@@ -24,11 +24,11 @@ namespace DevelopmentTest.View
 
             if (user.CheckInformation())
             {
-                DisplayAlert("Login", "Login Success", "Oke");
+                DisplayAlert("Login", "Login Sucessful","Ok");
             }
             else
             {
-                DisplayAlert("Login", "Incorrect", "Oke");
+                DisplayAlert("Login", "Incorrect", "Ok");
             }
         }
     }
