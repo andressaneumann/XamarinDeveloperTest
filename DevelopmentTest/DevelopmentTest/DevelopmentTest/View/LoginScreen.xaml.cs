@@ -24,7 +24,8 @@ namespace DevelopmentTest.View
 
             if (user.CheckInformation())
             {
-                DisplayAlert("Login", "Login Sucessful","Ok");
+                DisplayAlert("Login", "Successfull", "Ok");
+                Application.Current.MainPage = new NavigationPage(new WelcomePage());
             }
             else
             {

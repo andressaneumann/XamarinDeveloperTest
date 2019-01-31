@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using DevelopmentTest.Data;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,10 +29,14 @@ namespace DevelopmentTest.Models
 
         public bool CheckInformation()
         {
-            if (!this.Username.Equals("") && !this.Password.Equals(""))
+
+            UserDatabaseController user = new UserDatabaseController();
+
+
+            if (user.CheckUserExistance(this))
                 return true;
-            else
-                return false;
+
+            return false;
         }
     }
 }
