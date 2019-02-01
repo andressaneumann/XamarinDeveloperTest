@@ -4,9 +4,8 @@
              x:Class="DevelopmentTest.View.WelcomePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Your Lists" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

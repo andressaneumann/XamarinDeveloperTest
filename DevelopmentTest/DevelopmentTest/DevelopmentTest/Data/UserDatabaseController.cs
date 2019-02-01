@@ -51,7 +51,7 @@ namespace DevelopmentTest.Data
         {
             lock (locker)
             {
-                string query = $"SELECT * FROM [User] WHERE Username = '{user.Username}' AND Password = '{user.Password}'";
+                string query = $"SELECT * FROM User WHERE Username = '{user.Username}' AND Password = '{user.Password}'";
                 User databaseUser = (User)database.Query<User>(query).FirstOrDefault();
 
                 if (databaseUser != null)
