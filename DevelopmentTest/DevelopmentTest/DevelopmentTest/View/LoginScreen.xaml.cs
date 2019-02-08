@@ -1,4 +1,5 @@
-﻿using DevelopmentTest.Models;
+﻿using DevelopmentTest.Data;
+using DevelopmentTest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,14 @@ namespace DevelopmentTest.View
 
         private void SignInProcedure(object sender, EventArgs e)
         {
+            UserDatabaseController uc = new UserDatabaseController();
             User user = new User(Entry_username.Text, Entry_password.Text);
+            User databaseUser = uc.CheckUserExistance(user);
 
-            if (user.CheckInformation())
+            if (databaseUser != null)
             {
                 DisplayAlert("Login", "Successfull", "Ok");
+                App.loggedUser = user;
                 Application.Current.MainPage = new NavigationPage(new WelcomePage());
             }
             else

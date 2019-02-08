@@ -1,4 +1,5 @@
 ﻿using DevelopmentTest.Data;
+using DevelopmentTest.Models;
 using DevelopmentTest.View;
 using System;
 using Xamarin.Forms;
@@ -13,11 +14,15 @@ namespace DevelopmentTest
         static TokenDatabaseController tokenDatabase;
         static UserDatabaseController userDatabase;
 
+        public static User loggedUser { get; set; }
+
         public App()
         {
             InitializeComponent();
 
             MainPage = new LoginScreen();
+
+            loggedUser = null;
         }
 
         protected override void OnStart()

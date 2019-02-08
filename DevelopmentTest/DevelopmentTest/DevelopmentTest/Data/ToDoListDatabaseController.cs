@@ -19,16 +19,6 @@ namespace DevelopmentTest.Data
         {
             database = DependencyService.Get<ISQLite>().GetConnection();
             database.CreateTable<ToDoList>();
-
-            ToDoList firstList = new ToDoList
-            {
-                Id = 1,
-                Title = "Home",
-                UserId = 1
-            };
-
-            database.Insert(firstList);
-
         }
 
 
@@ -46,18 +36,28 @@ namespace DevelopmentTest.Data
             }
         }
 
-        public bool GetToDoList(User user)
-        {
-
-        }
-
-        public bool CreateToDoList(ToDoList toDoList)
+        public List<ToDoList> GetToDoLists(User user)
         {
             lock (locker)
             {
-                if(toDoList != null)
+                string query = $"SELECT * FROM ToDoList WHERE UserId = '{user.Id}' ";
+                List<ToDoList> databaseToDoList = database.Query<ToDoList>(query).ToList();
+
+                if (databaseToDoList != null)
+                    return databaseToDoList;
+
+                return null;
+            }
+        }
+
+        public bool CreateToDoList(string title)
+        {
+            lock (locker)
+            {
+                if(title != "")
                 {
-                    database.Insert(toDoList);
+                    ToDoList list = new ToDoList() { Title = title };
+                    database.Insert(list);
                     return true;
                 }
 
@@ -65,13 +65,13 @@ namespace DevelopmentTest.Data
             }
         }
 
-        public bool UpdateTable(ToDoList todoList)
-        {
-            lock (locker)
-            {
+        //public bool UpdateTable(ToDoList todoList)
+        //{
+        //    lock (locker)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         public bool DeleteList(ToDoList toDoList)
         {

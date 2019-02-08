@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
@@ -97,7 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevelopmentTest\DevelopmentTest.csproj">
-      <Project>{E63108A8-7B79-4C01-9753-E76D007B73DC}</Project>
+      <Project>{13A90A25-6B1A-4D09-B43F-F7822B71E3B4}</Project>
       <Name>DevelopmentTest</Name>
     </ProjectReference>
   </ItemGroup>

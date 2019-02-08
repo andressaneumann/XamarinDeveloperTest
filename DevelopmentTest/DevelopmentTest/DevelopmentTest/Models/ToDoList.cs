@@ -11,6 +11,7 @@ namespace DevelopmentTest.Models
         public int Id { get; set; }
         public string Title { get; set; }
 
+        [Ignore]
         public List<ToDo> ToDos { get; set; }
         public int UserId { get; set; }
     }

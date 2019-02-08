@@ -19,17 +19,16 @@ namespace DevelopmentTest.Data
             database = DependencyService.Get<ISQLite>().GetConnection();
             database.CreateTable<User>();
 
-            User admin = new User
-            {
-                Email = "admin@admin.com",
-                Username = "admin1",
-                Id = 1,
-                Name = "Admin",
-                Password = "123"
-            };
+            //User admin = new User
+            //{
+            //    Email = "admin@admin.com",
+            //    Username = "admin1",
+            //    Id = 1,
+            //    Name = "Admin",
+            //    Password = "123"
+            //};
 
-            database.Insert(admin);
-
+            //database.Insert(admin);
 
         }
 
@@ -47,7 +46,7 @@ namespace DevelopmentTest.Data
             }
         }
 
-        public bool CheckUserExistance(User user)
+        public User CheckUserExistance(User user)
         {
             lock (locker)
             {
@@ -55,9 +54,9 @@ namespace DevelopmentTest.Data
                 User databaseUser = (User)database.Query<User>(query).FirstOrDefault();
 
                 if (databaseUser != null)
-                    return true;
+                    return databaseUser;
 
-                return false;
+                return null;
             }
         }
 

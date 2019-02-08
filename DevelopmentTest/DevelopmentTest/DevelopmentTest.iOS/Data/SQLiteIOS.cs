@@ -1,26 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using DevelopmentTest.Data;
-using DevelopmentTest.Droid.Data;
+using DevelopmentTest.iOS.Data;
 using SQLite;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SQLiteAndroid))]
+[assembly: Xamarin.Forms.Dependency(typeof(SQLiteIOS))]
 
-namespace DevelopmentTest.Droid.Data
+namespace DevelopmentTest.iOS.Data
 {
-    public class SQLiteAndroid : ISQLite
+    public class SQLiteIOS : ISQLite
     {
-        public SQLiteAndroid()
+        public SQLiteIOS()
         {
 
         }
@@ -37,5 +27,4 @@ namespace DevelopmentTest.Droid.Data
             return conm;
         }
     }
-
 }
