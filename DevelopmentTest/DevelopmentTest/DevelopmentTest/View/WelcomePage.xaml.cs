@@ -14,6 +14,9 @@ namespace DevelopmentTest.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WelcomePage : ContentPage
 	{
+
+        private readonly List<ToDoList> results;
+
         public WelcomePage()
         {
             InitializeComponent();
@@ -21,10 +24,12 @@ namespace DevelopmentTest.View
             UserDatabaseController uc = new UserDatabaseController();
             ToDoListDatabaseController tc = new ToDoListDatabaseController();
 
-            List<ToDoList> lists = tc.GetToDoLists(App.loggedUser);
+            results = tc.GetToDoLists(App.loggedUser);
 
-            listView.ItemsSource = lists;
+            listView.ItemsSource = results;
         }
+
+        ToDoListDatabaseController tc = new ToDoListDatabaseController();
 
         void Handle_Clicked(object sender, System.EventArgs e)
         {
@@ -36,6 +41,17 @@ namespace DevelopmentTest.View
             var viewCell = (ListView)sender;
             ToDoList toDoList = (ToDoList)viewCell.SelectedItem;
             Navigation.PushAsync(new ListPropertyView(toDoList));
+        }
+
+        void Handle_SearchButtonPressed(object sender, System.EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            listView.ItemsSource = from x in results where x.Title.Contains(e.NewTextValue) select x;
         }
     }
 }

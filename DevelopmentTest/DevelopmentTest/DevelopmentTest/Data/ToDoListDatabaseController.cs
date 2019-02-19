@@ -49,6 +49,19 @@ namespace DevelopmentTest.Data
                 return null;
             }
         }
+        public List<ToDoList> GetToDo(ToDoList list)
+        {
+            lock (locker)
+            {
+                string query = $"SELECT * FROM ToDoList WHERE Title =  '{list.Title}'";
+                List<ToDoList> databaseToDoList = database.Query<ToDoList>(query).ToList();
+
+                if (databaseToDoList != null)
+                    return databaseToDoList;
+
+                return null;
+            }
+        }
 
         public bool CreateToDoList(string title)
         {

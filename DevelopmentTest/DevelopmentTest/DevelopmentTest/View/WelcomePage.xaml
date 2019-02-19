@@ -5,11 +5,15 @@
              Title="Lists">
     <ContentPage.Content>
         <StackLayout>
+            
+            <SearchBar x:Name="searchBar" Placeholder="Serch for your list" TextChanged="Handle_TextChanged" />
+            
             <ListView x:Name="listView" ItemTapped="Handle_ItemTapped" BindingContext="{Binding .}">
                 <ListView.ItemTemplate>
                   <DataTemplate>
                     <TextCell Text="{Binding Title}"/>
                   </DataTemplate>
+                    
                 </ListView.ItemTemplate>
             </ListView>
             
