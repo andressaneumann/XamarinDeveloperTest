@@ -5,11 +5,8 @@
              Padding="0,20,0,0">
 
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-        <Label x:Name="Lbl_username" Text="Username"/>
         <Entry x:Name="Entry_username" Placeholder="Username"/>
-        <Label x:Name="Lbl_password"  Text="Password" />
         <Entry x:Name="Entry_password" IsPassword="true" Placeholder="Password"/>
-
-        <Button x:Name="Btn_Signin" Text="Sign in" Clicked="SignInProcedure" />
+        <Button x:Name="Btn_Signin" Text="Sign in" TextColor="White" BackgroundColor="Blue" Clicked="SignInProcedure" />
     </StackLayout>
 </ContentPage>

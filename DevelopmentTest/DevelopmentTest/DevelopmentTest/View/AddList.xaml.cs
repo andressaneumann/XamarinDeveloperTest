@@ -7,7 +7,7 @@ namespace DevelopmentTest.View
 {
     public partial class AddList : ContentPage
     {
-
+        
 
         public AddList()
         {
@@ -18,7 +18,7 @@ namespace DevelopmentTest.View
         {
             ToDoListDatabaseController tc = new ToDoListDatabaseController();
 
-            if (tc.CreateToDoList(ToDoTitle.Text))
+            if (tc.CreateToDoList(ToDoTitle.Text, datePicker.Date))
             {
                 DisplayAlert("Add list", "List added", "Ok");
                 Application.Current.MainPage = new NavigationPage(new WelcomePage());
