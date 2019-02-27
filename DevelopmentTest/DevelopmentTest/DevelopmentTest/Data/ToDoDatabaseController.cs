@@ -33,13 +33,13 @@ namespace DevelopmentTest.Data
             }
         }
 
-        public bool CreateToDo(string title, int listId)
+        public bool CreateToDo(string title, int listId, DateTime date, string color)
         {
             lock (locker)
             {
                 if (title != "")
                 {
-                    ToDo toDo = new ToDo() { Title = title, ToDoListID = listId };
+                    ToDo toDo = new ToDo() { Title = title, ToDoListID = listId, Date = date, ToDoListColor = color };
                     database.Insert(toDo);
                     return true;
                 }

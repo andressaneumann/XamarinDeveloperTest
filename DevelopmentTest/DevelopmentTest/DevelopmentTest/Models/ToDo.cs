@@ -11,6 +11,8 @@ namespace DevelopmentTest.Models
         public string Title { get; set; }
 
         public int ToDoListID { get; set; }
+        public string ToDoListColor { get; set; }
+        public DateTime Date { get; set; }
 
     }
 }

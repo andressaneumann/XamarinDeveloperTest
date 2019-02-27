@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.AddToDo">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.AddToDo"
+             xmlns:local="clr-namespace:DevelopmentTest.View">
         <ContentPage.Content>
         <StackLayout>
             <Entry x:Name="ToDoTitle" Placeholder="Title" />
+            <DatePicker x:Name="datePicker" HorizontalOptions="Center"
+                        MinimumDate="01/01/2018"
+                        MaximumDate="12/31/2019"
+                        Date="02/26/2018"/>
+            <local:ColorPicker x:Name="Picker"/>
             <Button Text="Submit" Clicked="Handle_Clicked" />
         </StackLayout>
     </ContentPage.Content>

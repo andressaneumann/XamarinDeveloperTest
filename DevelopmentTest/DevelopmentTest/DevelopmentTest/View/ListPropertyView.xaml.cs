@@ -23,7 +23,7 @@ namespace DevelopmentTest.View
             toDoslistView.ItemsSource = td.GetToDo((ToDoList)this.BindingContext);
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        void AddToDo(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new AddToDo((ToDoList)this.BindingContext));
         }
@@ -32,7 +32,6 @@ namespace DevelopmentTest.View
         {
 
         }
-
 
     }
 }

@@ -13,16 +13,16 @@
             
         <StackLayout>
             <Label Text="{Binding Title}"/>
-            <Label Text="{Binding Date, Converter={StaticResource DateFormatConverter}}" />
-            <ListView x:Name="toDoslistView" ItemTapped="Handle_ItemTapped" BindingContext="{Binding .}">
+            <ListView x:Name="toDoslistView" ItemTapped="Handle_ItemTapped" BindingContext="{Binding .}" BackgroundColor="{Binding ToDoListColor}" >
                 <ListView.ItemTemplate>
                   <DataTemplate>
                     <TextCell Text="{Binding Title}"/>
+                    <!-- <TextCell Text="{Binding Date, Converter={StaticResource DateFormatConverter}}" />-->
                   </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             
-            <Button Text="Add To Do" Clicked="Handle_Clicked" BindingContext="{Binding .}"/>
+            <Button Text="Add To Do" Clicked="AddToDo" BindingContext="{Binding .}"/>
         </StackLayout>
         
 </ContentPage>

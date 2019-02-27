@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.ColorPicker">
+    
+    <Grid.RowDefinitions>
+        <RowDefinition Height="38"></RowDefinition>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="38"></ColumnDefinition>
+        <ColumnDefinition Width="38"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+        
+     <Grid Grid.Row="0" Grid.Column="0" Padding="2" BackgroundColor="Gray" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+        <BoxView x:Name="bvColorPicker"></BoxView>
+     </Grid>
+    
+     <Image x:Name="imgColorPicker" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+     <Picker x:Name="pickerColorPicker" IsVisible="false" SelectedIndexChanged="Handle_SelectedIndexChanged"/>
+</Grid>

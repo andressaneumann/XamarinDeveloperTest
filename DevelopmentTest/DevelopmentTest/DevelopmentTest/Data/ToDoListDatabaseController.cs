@@ -63,13 +63,13 @@ namespace DevelopmentTest.Data
             }
         }
 
-        public bool CreateToDoList(string title, DateTime date)
+        public bool CreateToDoList(string title)
         {
             lock (locker)
             {
                 if(title != "")
                 {
-                    ToDoList list = new ToDoList() { Title = title, Date = date};
+                    ToDoList list = new ToDoList() { Title = title};
                     database.Insert(list);
                     return true;
                 }

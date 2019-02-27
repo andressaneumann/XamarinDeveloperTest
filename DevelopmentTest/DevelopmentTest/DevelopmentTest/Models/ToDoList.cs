@@ -14,7 +14,7 @@ namespace DevelopmentTest.Models
         [Ignore]
         public List<ToDo> ToDos { get; set; }
         public int UserId { get; set; }
-        //public Color LayoutColor { get; set; }
-        public DateTime Date { get; set; }
+        public string ListColor { get; set; }
+
     }
 }

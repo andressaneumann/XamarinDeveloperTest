@@ -27,6 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\ColorPicker.png" />
+    <None Remove="View\ColorPicker.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -35,9 +39,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="View\ColorPicker.xaml.cs" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
+    <Compile Remove="Models\Color.cs" />
   </ItemGroup>
 </Project>

@@ -23,7 +23,7 @@ namespace DevelopmentTest.View
         {
             var viewCell = (Button)sender;
             ToDoDatabaseController td = new ToDoDatabaseController();
-            if (td.CreateToDo(ToDoTitle.Text, ((ToDoList)this.BindingContext).Id)) 
+            if (td.CreateToDo(ToDoTitle.Text, ((ToDoList)this.BindingContext).Id, datePicker.Date, Picker.PickerSelectedColor)) 
             {
                 DisplayAlert("Add ToDo", "ToDo added", "Ok");
                 Navigation.PushAsync(new ListPropertyView((ToDoList)this.BindingContext));
