@@ -45,10 +45,6 @@ namespace DevelopmentTest.View
             Navigation.PushAsync(new AddToDo((ToDoList)this.BindingContext));
         }
 
-        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
-        {
-
-        }
 
         void DeleteList(object sender, System.EventArgs e)
         {
@@ -66,8 +62,6 @@ namespace DevelopmentTest.View
                     }
                 }
             });
-
-
         }
 
     }

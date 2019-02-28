@@ -26,7 +26,9 @@ namespace DevelopmentTest.View
             if (td.CreateToDo(ToDoTitle.Text, ((ToDoList)this.BindingContext).Id, datePicker.Date, Picker.PickerSelectedColor)) 
             {
                 DisplayAlert("Add ToDo", "ToDo added", "Ok");
+                Navigation.RemovePage(this);
                 Navigation.PushAsync(new ListPropertyView((ToDoList)this.BindingContext));
+
             }
             else
                 DisplayAlert("Add ToDo", "Error", "Ok");
