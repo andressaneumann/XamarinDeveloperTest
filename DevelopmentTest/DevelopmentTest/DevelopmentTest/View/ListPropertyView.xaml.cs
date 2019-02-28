@@ -4,11 +4,18 @@ using DevelopmentTest.Data;
 using DevelopmentTest.Models;
 using Xamarin.Forms;
 using DevelopmentTest.Converters;
+using System.Collections.ObjectModel;
+using DevelopmentTest.Repeaters;
+using System.Threading.Tasks;
 
 namespace DevelopmentTest.View
 {
     public partial class ListPropertyView : ContentPage
     {
+
+        private ObservableCollection<ToDoRepeater> items = new ObservableCollection<ToDoRepeater>();
+        private ToDoRepeater toDo = new ToDoRepeater();
+
         public ListPropertyView()
         {
             InitializeComponent();
@@ -20,7 +27,17 @@ namespace DevelopmentTest.View
             this.BindingContext = currentList;
             ToDoDatabaseController td = new ToDoDatabaseController();
 
-            toDoslistView.ItemsSource = td.GetToDo((ToDoList)this.BindingContext);
+            List<ToDo> toDos = td.GetToDo((ToDoList)this.BindingContext);
+
+            foreach (ToDo item in toDos)
+            {
+
+                ToDoRepeater row = new ToDoRepeater(item.Title, item.ToDoListColor, item.Date);
+                items.Add(row);
+
+            }
+
+            MainRepeater.ItemsSource = items;
         }
 
         void AddToDo(object sender, System.EventArgs e)
@@ -30,6 +47,26 @@ namespace DevelopmentTest.View
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
+
+        }
+
+        void DeleteList(object sender, System.EventArgs e)
+        {
+
+            ToDoListDatabaseController td = new ToDoListDatabaseController();
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                bool answer = await DisplayAlert("Delete list", "Are you sure?", "Yes", "No");
+
+                if (answer)
+                {
+                    if (td.DeleteList((ToDoList)this.BindingContext))
+                    {
+                        await Navigation.PopAsync();
+                    }
+                }
+            });
+
 
         }
 

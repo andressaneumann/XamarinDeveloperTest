@@ -94,9 +94,10 @@ namespace DevelopmentTest.Data
                 ToDoList databaseToDoList = (ToDoList)database.Query<ToDoList>(query).FirstOrDefault();
 
 
+
                 if (databaseToDoList != null)
                 {
-                    database.Delete<ToDoList>(databaseToDoList);
+                    database.Delete(databaseToDoList);
                     return true;
                 }
 

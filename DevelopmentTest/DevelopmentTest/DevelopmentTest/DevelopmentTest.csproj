@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />
+    <Folder Include="Repeaters\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\Color.cs" />
+    <Compile Remove="Repeaters\RepeaterItem.cs" />
   </ItemGroup>
 </Project>

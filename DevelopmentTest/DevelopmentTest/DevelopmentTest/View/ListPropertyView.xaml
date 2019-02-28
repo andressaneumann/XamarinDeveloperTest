@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="DevelopmentTest.View.ListPropertyView"
-    xmlns:local="clr-namespace:DevelopmentTest.Converters">
-    
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.ListPropertyView" xmlns:local="clr-namespace:DevelopmentTest.Converters" xmlns:ui="clr-namespace:DevelopmentTest.Repeaters">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:DateFormatConverter x:Key="DateFormatConverter"></local:DateFormatConverter>
+            <local:DateFormatConverter x:Key="DateFormatConverter">
+            </local:DateFormatConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
-            
-        <StackLayout>
-            <Label Text="{Binding Title}"/>
-            <ListView x:Name="toDoslistView" ItemTapped="Handle_ItemTapped" BindingContext="{Binding .}" BackgroundColor="{Binding ToDoListColor}" >
-                <ListView.ItemTemplate>
-                  <DataTemplate>
-                    <TextCell Text="{Binding Title}"/>
-                    <!-- <TextCell Text="{Binding Date, Converter={StaticResource DateFormatConverter}}" />-->
-                  </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            
-            <Button Text="Add To Do" Clicked="AddToDo" BindingContext="{Binding .}"/>
-        </StackLayout>
-        
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="{Binding Title}" />
+                <!-- REPEATER IMPLEMENTATION -->
+                <ui:Repeater x:Name="MainRepeater">
+                    <ui:Repeater.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="{Binding Color}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" Text="{Binding Title}" />
+                                    <Label HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Text="{Binding Date, Converter={StaticResource DateFormatConverter}}" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ui:Repeater.ItemTemplate>
+                </ui:Repeater>
+                <Button Text="Add To Do" Clicked="AddToDo" BindingContext="{Binding .}" />
+                <Button Text="Remove list" Clicked="DeleteList" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
