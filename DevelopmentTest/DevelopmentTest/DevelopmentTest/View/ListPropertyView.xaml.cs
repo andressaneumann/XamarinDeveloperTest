@@ -16,6 +16,8 @@ namespace DevelopmentTest.View
         private ObservableCollection<ToDoRepeater> items = new ObservableCollection<ToDoRepeater>();
         private ToDoRepeater toDo = new ToDoRepeater();
 
+
+
         public ListPropertyView()
         {
             InitializeComponent();
@@ -26,6 +28,8 @@ namespace DevelopmentTest.View
             InitializeComponent();
             this.BindingContext = currentList;
             ToDoDatabaseController td = new ToDoDatabaseController();
+
+
 
             List<ToDo> toDos = td.GetToDo((ToDoList)this.BindingContext);
 

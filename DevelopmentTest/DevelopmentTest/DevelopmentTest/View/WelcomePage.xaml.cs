@@ -27,6 +27,7 @@ namespace DevelopmentTest.View
             results = tc.GetToDoLists(App.loggedUser);
 
             listView.ItemsSource = results;
+
         }
 
         ToDoListDatabaseController tc = new ToDoListDatabaseController();

@@ -1,23 +1,18 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DevelopmentTest.View.WelcomePage" 
-             Title="Lists">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.WelcomePage" Title="Lists" xmlns:ui="clr-namespace:DevelopmentTest.Repeaters">
     <ContentPage.Content>
-        <StackLayout>
-            
-            <SearchBar x:Name="searchBar" Placeholder="Serch for your list" TextChanged="Handle_TextChanged" />
-            
-            <ListView x:Name="listView" ItemTapped="Handle_ItemTapped" BindingContext="{Binding .}">
-                <ListView.ItemTemplate>
-                  <DataTemplate>
-                    <TextCell Text="{Binding Title}"/>
-                  </DataTemplate>
-                    
-                </ListView.ItemTemplate>
-            </ListView>
-            
-            <Button Text="Add List" Clicked="Handle_Clicked" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <SearchBar x:Name="searchBar" Placeholder="Serch for your list" TextChanged="Handle_TextChanged" />
+                <ListView x:Name="listView" ItemTapped="Handle_ItemTapped" BindingContext="{Binding .}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Title}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Add List" Clicked="Handle_Clicked" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
