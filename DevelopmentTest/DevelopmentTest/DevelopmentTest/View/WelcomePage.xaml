@@ -4,7 +4,7 @@
         <ScrollView>
             <StackLayout>
                 <SearchBar x:Name="searchBar" Placeholder="Serch for your list" TextChanged="Handle_TextChanged" />
-                <ListView x:Name="listView" ItemTapped="Handle_ItemTapped" BindingContext="{Binding .}" ItemsSource="{Binding toDoList}">
+                <ListView x:Name="listView" ItemTapped="Handle_ItemTapped" BindingContext="{Binding .}" ItemsSource="{Binding ToDoList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Title}" />

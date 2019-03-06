@@ -25,12 +25,12 @@ namespace DevelopmentTest.View
             var viewCell = (Button)sender;
             ToDoDatabaseController td = new ToDoDatabaseController();
 
-            ToDoList addedList = (ToDoList)this.BindingContext;
+            ToDoList addedList = ((ToDoViewModel)this.BindingContext).SelectedList;
 
-            if (td.CreateToDo(ToDoTitle.Text, ((ToDoList)this.BindingContext).Id, datePicker.Date, Picker.PickerSelectedColor)) 
+            if (td.CreateToDo(ToDoTitle.Text, addedList.Id, datePicker.Date, Picker.PickerSelectedColor)) 
             {
                 DisplayAlert("Add ToDo", "ToDo added", "Ok");
-                ((ToDoViewModel)this.BindingContext).toDoList.Add(addedList);
+                ((ToDoViewModel)this.BindingContext).ToDos.Add(addedList);
                 Navigation.PopAsync();
                 //Navigation.RemovePage(this);
                 //Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));

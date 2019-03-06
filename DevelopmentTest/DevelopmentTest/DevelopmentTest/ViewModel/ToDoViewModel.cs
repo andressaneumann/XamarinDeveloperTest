@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using DevelopmentTest.Models;
 using DevelopmentTest.Data;
+using DevelopmentTest.Repeaters;
 
 namespace DevelopmentTest.ViewModel
 {
@@ -27,9 +28,11 @@ namespace DevelopmentTest.ViewModel
         {
             toDoListController = new ToDoListDatabaseController();
             toDoList = toDoListController.GetToDoLists(App.loggedUser);
+            toDos = new List<ToDoRepeater>();
         }
 
-        public List<ToDoList> toDoList
+        List<ToDoList> toDoList;
+        public List<ToDoList> ToDoList
         {
 
             get { return toDoList; }
@@ -37,11 +40,14 @@ namespace DevelopmentTest.ViewModel
             set
             {
                 toDoList = value;
-                this.Notify("toDoList");
+                this.Notify("ToDoList");
             }
         }
 
-        public ToDoList selectedList
+
+
+        ToDoList selectedList;
+        public ToDoList SelectedList
         {
 
             get { return selectedList; }
@@ -49,7 +55,20 @@ namespace DevelopmentTest.ViewModel
             set
             {
                 selectedList = value;
-                this.Notify("selectedList");
+                this.Notify("SelectedList");
+            }
+        }
+
+        List<ToDoRepeater> toDos;
+        public List<ToDoRepeater> ToDos
+        {
+
+            get { return toDos; }
+
+            set
+            {
+                toDos = value;
+                this.Notify("ToDos");
             }
         }
 

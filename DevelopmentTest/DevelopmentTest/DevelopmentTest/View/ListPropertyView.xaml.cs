@@ -32,17 +32,15 @@ namespace DevelopmentTest.View
 
 
 
-            List<ToDo> toDos = td.GetToDo((ToDoList)this.BindingContext);
+            List<ToDo> toDos = td.GetToDo(((ToDoViewModel)this.BindingContext).SelectedList);
 
             foreach (ToDo item in toDos)
             {
 
                 ToDoRepeater row = new ToDoRepeater(item.Title, item.ToDoListColor, item.Date);
-                items.Add(row);
+                ((ToDoViewModel)this.BindingContext).ToDos.Add(row);
 
             }
-
-            MainRepeater.ItemsSource = items;
         }
 
         void AddToDo(object sender, System.EventArgs e)
@@ -61,8 +59,9 @@ namespace DevelopmentTest.View
 
                 if (answer)
                 {
-                    if (td.DeleteList((ToDoList)this.BindingContext))
+                    if (td.DeleteList(((ToDoViewModel)this.BindingContext).SelectedList))
                     {
+                        ((ToDoViewModel)this.BindingContext).ToDoList = ((ToDoViewModel)this.BindingContext).ToDoListController.GetToDoLists(App.loggedUser);
                         await Navigation.PopAsync();
                     }
                 }

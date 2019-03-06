@@ -22,7 +22,8 @@ namespace DevelopmentTest.View
         public WelcomePage()
         {
             InitializeComponent();
-            this.BindingContext = new ToDoViewModel();
+            ToDoViewModel vm = new ToDoViewModel();
+            this.BindingContext = vm;
         }
 
         ToDoListDatabaseController tc = new ToDoListDatabaseController();
@@ -36,7 +37,7 @@ namespace DevelopmentTest.View
         {
             var viewCell = (ListView)sender;
             ToDoList toDoList = (ToDoList)viewCell.SelectedItem;
-            ((ToDoViewModel)this.BindingContext).selectedList = toDoList;
+            ((ToDoViewModel)this.BindingContext).SelectedList = toDoList;
             Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));
         }
 
@@ -44,6 +45,7 @@ namespace DevelopmentTest.View
         {
             throw new NotImplementedException();
         }
+
 
 
         void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)

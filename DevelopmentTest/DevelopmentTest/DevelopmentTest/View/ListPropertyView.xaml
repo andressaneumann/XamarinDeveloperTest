@@ -11,9 +11,9 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="{Binding Title}" />
+                <Label Text="{Binding SelectedList.Title}" />
                 <!-- REPEATER IMPLEMENTATION -->
-                <ui:Repeater x:Name="MainRepeater">
+                <ui:Repeater x:Name="MainRepeater" ItemsSource="{Binding ToDos}">
                     <ui:Repeater.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
