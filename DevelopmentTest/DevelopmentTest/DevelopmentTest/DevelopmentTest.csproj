@@ -42,6 +42,7 @@
   <ItemGroup>
     <Folder Include="Converters\" />
     <Folder Include="Repeaters\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\Color.cs" />

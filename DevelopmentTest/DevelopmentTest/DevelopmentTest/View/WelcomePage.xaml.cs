@@ -1,5 +1,6 @@
 ﻿using DevelopmentTest.Data;
 using DevelopmentTest.Models;
+using DevelopmentTest.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,19 +16,13 @@ namespace DevelopmentTest.View
 	public partial class WelcomePage : ContentPage
 	{
 
-        private readonly List<ToDoList> results;
+
+        private List<ToDoList> results;
 
         public WelcomePage()
         {
             InitializeComponent();
-
-            UserDatabaseController uc = new UserDatabaseController();
-            ToDoListDatabaseController tc = new ToDoListDatabaseController();
-
-            results = tc.GetToDoLists(App.loggedUser);
-
-            listView.ItemsSource = results;
-
+            this.BindingContext = new ToDoViewModel();
         }
 
         ToDoListDatabaseController tc = new ToDoListDatabaseController();
@@ -41,7 +36,8 @@ namespace DevelopmentTest.View
         {
             var viewCell = (ListView)sender;
             ToDoList toDoList = (ToDoList)viewCell.SelectedItem;
-            Navigation.PushAsync(new ListPropertyView(toDoList));
+            ((ToDoViewModel)this.BindingContext).selectedList = toDoList;
+            Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));
         }
 
         void Handle_SearchButtonPressed(object sender, System.EventArgs e)
@@ -54,5 +50,16 @@ namespace DevelopmentTest.View
         {
             listView.ItemsSource = from x in results where x.Title.Contains(e.NewTextValue) select x;
         }
+
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    UserDatabaseController uc = new UserDatabaseController();
+        //    ToDoListDatabaseController tc = new ToDoListDatabaseController();
+
+        //    this.results = tc.GetToDoLists(App.loggedUser);
+
+        //    listView.ItemsSource = results;
+        //}
     }
 }

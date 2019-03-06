@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DevelopmentTest.Data;
 using DevelopmentTest.Models;
+using DevelopmentTest.ViewModel;
 using Xamarin.Forms;
 
 namespace DevelopmentTest.View
@@ -13,7 +14,7 @@ namespace DevelopmentTest.View
             InitializeComponent();
         }
 
-        public AddToDo(ToDoList currentList)
+        public AddToDo(ToDoViewModel currentList)
         {
             InitializeComponent();
             this.BindingContext = currentList;
@@ -23,11 +24,16 @@ namespace DevelopmentTest.View
         {
             var viewCell = (Button)sender;
             ToDoDatabaseController td = new ToDoDatabaseController();
+
+            ToDoList addedList = (ToDoList)this.BindingContext;
+
             if (td.CreateToDo(ToDoTitle.Text, ((ToDoList)this.BindingContext).Id, datePicker.Date, Picker.PickerSelectedColor)) 
             {
                 DisplayAlert("Add ToDo", "ToDo added", "Ok");
-                Navigation.RemovePage(this);
-                Navigation.PushAsync(new ListPropertyView((ToDoList)this.BindingContext));
+                ((ToDoViewModel)this.BindingContext).toDoList.Add(addedList);
+                Navigation.PopAsync();
+                //Navigation.RemovePage(this);
+                //Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));
 
             }
             else

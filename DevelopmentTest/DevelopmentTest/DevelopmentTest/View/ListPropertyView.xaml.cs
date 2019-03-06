@@ -7,6 +7,7 @@ using DevelopmentTest.Converters;
 using System.Collections.ObjectModel;
 using DevelopmentTest.Repeaters;
 using System.Threading.Tasks;
+using DevelopmentTest.ViewModel;
 
 namespace DevelopmentTest.View
 {
@@ -23,10 +24,10 @@ namespace DevelopmentTest.View
             InitializeComponent();
         }
 
-        public ListPropertyView(ToDoList currentList)
+        public ListPropertyView(ToDoViewModel viewModel)
         {
             InitializeComponent();
-            this.BindingContext = currentList;
+            this.BindingContext = viewModel;
             ToDoDatabaseController td = new ToDoDatabaseController();
 
 
@@ -46,7 +47,7 @@ namespace DevelopmentTest.View
 
         void AddToDo(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new AddToDo((ToDoList)this.BindingContext));
+            Navigation.PushAsync(new AddToDo((ToDoViewModel)this.BindingContext));
         }
 
 
