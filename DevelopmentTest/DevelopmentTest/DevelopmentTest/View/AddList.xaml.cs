@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using DevelopmentTest.Data;
+using DevelopmentTest.Models;
+using DevelopmentTest.ViewModel;
 using Xamarin.Forms;
 
 namespace DevelopmentTest.View
@@ -8,9 +10,10 @@ namespace DevelopmentTest.View
     public partial class AddList : ContentPage
     {
 
-        public AddList()
+        public AddList(ToDoViewModel vm)
         {
             InitializeComponent();
+            this.BindingContext = vm;
         }
 
         void Handle_Clicked(object sender, System.EventArgs e)
@@ -20,6 +23,8 @@ namespace DevelopmentTest.View
             if (tc.CreateToDoList(ToDoTitle.Text))
             {
                 DisplayAlert("Add list", "List added", "Ok");
+                ToDoList newList = new ToDoList() { Title = ToDoTitle.Text }; 
+                ((ToDoViewModel)this.BindingContext).ToDoList.Add(newList);
                 Navigation.PopAsync();
             }
             else

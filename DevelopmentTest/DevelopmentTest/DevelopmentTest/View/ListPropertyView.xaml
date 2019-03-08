@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="DevelopmentTest.View.ListPropertyView" xmlns:local="clr-namespace:DevelopmentTest.Converters" 
-             xmlns:ui="clr-namespace:DevelopmentTest.Repeaters">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.ListPropertyView" xmlns:local="clr-namespace:DevelopmentTest.Converters" xmlns:ui="clr-namespace:DevelopmentTest.Repeaters">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:DateFormatConverter x:Key="DateFormatConverter">
@@ -25,9 +23,15 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                        <Switch/>
-                                        <Label HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" Text="{Binding Title}" />
-                                        <Label HorizontalOptions="Center" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Text="{Binding Date, Converter={StaticResource DateFormatConverter}}" />
+                                    <ContentView Grid.Row="0" Grid.Column="0">
+                                        <ContentView.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Handle_Tapped" />
+                                        </ContentView.GestureRecognizers>
+                                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Label Text="{Binding Title}"  />
+                                            <Label Text="{Binding Date, Converter={StaticResource DateFormatConverter}}" />
+                                        </StackLayout>
+                                    </ContentView>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

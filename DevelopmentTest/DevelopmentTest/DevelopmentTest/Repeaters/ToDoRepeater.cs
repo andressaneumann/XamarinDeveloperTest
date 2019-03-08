@@ -8,7 +8,6 @@ namespace DevelopmentTest.Repeaters
         public string BackgroundColor { get; set; }
         public DateTime Date { get; set; }
 
-
         public ToDoRepeater()
         {
 

@@ -66,5 +66,9 @@ namespace DevelopmentTest.View
             });
         }
 
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ToDoPropertyView((ToDoViewModel)this.BindingContext));
+        }
     }
 }

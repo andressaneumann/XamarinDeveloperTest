@@ -30,7 +30,7 @@ namespace DevelopmentTest.View
 
         void Handle_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new AddList());
+            Navigation.PushAsync(new AddList((ToDoViewModel)this.BindingContext));
         }
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)

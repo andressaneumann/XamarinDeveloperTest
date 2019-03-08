@@ -34,8 +34,6 @@ namespace DevelopmentTest.View
                 ToDoRepeater rep = new ToDoRepeater() { BackgroundColor = Picker.PickerSelectedColor, Date = datePicker.Date, Title = ToDoTitle.Text };
                 ((ToDoViewModel)this.BindingContext).ToDos.Add(rep);
                 Navigation.PopAsync();
-                //Navigation.RemovePage(this);
-                //Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));
 
             }
             else
