@@ -17,7 +17,7 @@
                     <ui:Repeater.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid BackgroundColor="{Binding Color}">
+                                <Grid BackgroundColor="{Binding BackgroundColor}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="40" />
                                         <RowDefinition Height="40" />

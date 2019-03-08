@@ -5,7 +5,7 @@ namespace DevelopmentTest.Repeaters
     {
 
         public string Title { get; set; }
-        public string Color { get; set; }
+        public string BackgroundColor { get; set; }
         public DateTime Date { get; set; }
 
 
@@ -17,7 +17,7 @@ namespace DevelopmentTest.Repeaters
         public ToDoRepeater(string title, string color, DateTime date)
         {
             Title = title;
-            Color = color;
+            BackgroundColor = color;
             Date = date;
         }
     }

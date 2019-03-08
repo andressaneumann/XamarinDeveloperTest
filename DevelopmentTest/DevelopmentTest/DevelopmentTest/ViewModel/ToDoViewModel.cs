@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DevelopmentTest.Models;
 using DevelopmentTest.Data;
 using DevelopmentTest.Repeaters;
+using System.Collections.ObjectModel;
 
 namespace DevelopmentTest.ViewModel
 {
@@ -27,12 +28,15 @@ namespace DevelopmentTest.ViewModel
         public ToDoViewModel()
         {
             toDoListController = new ToDoListDatabaseController();
-            toDoList = toDoListController.GetToDoLists(App.loggedUser);
-            toDos = new List<ToDoRepeater>();
+            List<ToDoList> getLists = toDoListController.GetToDoLists(App.loggedUser);
+            ObservableCollection<ToDoList> dbLists = new ObservableCollection<ToDoList>();
+            getLists.ForEach(x => dbLists.Add(x));
+            toDoList = dbLists;
+            toDos = new ObservableCollection<ToDoRepeater>();
         }
 
-        List<ToDoList> toDoList;
-        public List<ToDoList> ToDoList
+        ObservableCollection<ToDoList> toDoList;
+        public ObservableCollection<ToDoList> ToDoList
         {
 
             get { return toDoList; }
@@ -59,12 +63,12 @@ namespace DevelopmentTest.ViewModel
             }
         }
 
-        List<ToDoRepeater> toDos;
-        public List<ToDoRepeater> ToDos
+        ObservableCollection<ToDoRepeater> toDos;
+        public ObservableCollection<ToDoRepeater> ToDos
         {
-
-            get { return toDos; }
-
+            get { 
+                return toDos; 
+            }
             set
             {
                 toDos = value;

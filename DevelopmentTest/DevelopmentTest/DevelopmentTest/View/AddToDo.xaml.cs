@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DevelopmentTest.Data;
 using DevelopmentTest.Models;
 using DevelopmentTest.ViewModel;
+using DevelopmentTest.Repeaters;
 using Xamarin.Forms;
 
 namespace DevelopmentTest.View
@@ -30,7 +31,8 @@ namespace DevelopmentTest.View
             if (td.CreateToDo(ToDoTitle.Text, addedList.Id, datePicker.Date, Picker.PickerSelectedColor)) 
             {
                 DisplayAlert("Add ToDo", "ToDo added", "Ok");
-                ((ToDoViewModel)this.BindingContext).ToDos.Add(addedList);
+                ToDoRepeater rep = new ToDoRepeater() { BackgroundColor = Picker.PickerSelectedColor, Date = datePicker.Date, Title = ToDoTitle.Text };
+                ((ToDoViewModel)this.BindingContext).ToDos.Add(rep);
                 Navigation.PopAsync();
                 //Navigation.RemovePage(this);
                 //Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));

@@ -20,7 +20,7 @@ namespace DevelopmentTest.View
             if (tc.CreateToDoList(ToDoTitle.Text))
             {
                 DisplayAlert("Add list", "List added", "Ok");
-                Application.Current.MainPage = new NavigationPage(new WelcomePage());
+                Navigation.PopAsync();
             }
             else
                 DisplayAlert("Add list", "Error", "Ok");
