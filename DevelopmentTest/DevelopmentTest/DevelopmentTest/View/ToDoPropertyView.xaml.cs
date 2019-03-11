@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DevelopmentTest.Data;
 using DevelopmentTest.ViewModel;
 using Xamarin.Forms;
 
@@ -11,6 +12,16 @@ namespace DevelopmentTest.View
         {
             InitializeComponent();
             this.BindingContext = vm;
+        }
+
+        void Update_ToDo(object sender, System.EventArgs e)
+        {
+            ToDoDatabaseController td = new ToDoDatabaseController();
+
+            if (td.UpdateToDo(ToDoTitle.Text, datePicker.Date, Picker.PickerSelectedColor))
+            {
+
+            }
         }
     }
 }

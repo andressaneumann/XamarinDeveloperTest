@@ -36,7 +36,7 @@ namespace DevelopmentTest.View
             foreach (ToDo item in toDos)
             {
 
-                ToDoRepeater row = new ToDoRepeater(item.Title, item.ToDoListColor, item.Date);
+                ToDoRepeater row = new ToDoRepeater(item.Title, item.ToDoListColor, item.Date, item.Id);
                 ((ToDoViewModel)this.BindingContext).ToDos.Add(row);
             }
         }
@@ -68,6 +68,10 @@ namespace DevelopmentTest.View
 
         void Handle_Tapped(object sender, System.EventArgs e)
         {
+            var viewCell = (ContentView)sender;
+            ToDoRepeater currentToDoRepeater = (ToDoRepeater)viewCell.BindingContext;
+            ToDo currentToDo = new ToDo() { Id = currentToDoRepeater.Id, Title = currentToDoRepeater.Title, Date = currentToDoRepeater.Date, ToDoListColor = currentToDoRepeater.BackgroundColor };
+            ((ToDoViewModel)this.BindingContext).SelectedToDo = currentToDo;
             Navigation.PushAsync(new ToDoPropertyView((ToDoViewModel)this.BindingContext));
         }
     }

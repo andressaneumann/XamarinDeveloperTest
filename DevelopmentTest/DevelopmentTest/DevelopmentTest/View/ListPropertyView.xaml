@@ -25,7 +25,7 @@
                                     </Grid.ColumnDefinitions>
                                     <ContentView Grid.Row="0" Grid.Column="0">
                                         <ContentView.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="Handle_Tapped" />
+                                            <TapGestureRecognizer Tapped="Handle_Tapped" CommandParameter="{Binding .}" />
                                         </ContentView.GestureRecognizers>
                                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                             <Label Text="{Binding Title}"  />

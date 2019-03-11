@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.ToDoPropertyView">
-    <ListView ItemsSource="{Binding ToDos}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Title}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.ToDoPropertyView"
+             xmlns:local="clr-namespace:DevelopmentTest.View">
+    <StackLayout>
+        <Entry x:Name="ToDoTitle" Placeholder="{Binding SelectedToDo.Title}" />
+        <local:ColorPicker x:Name="Picker"/>
+        <DatePicker x:Name="datePicker" HorizontalOptions="Center"
+                    MinimumDate="01/01/2018"
+                    MaximumDate="12/31/2019"
+                    Date="02/26/2018"/>
+        <Button Text="Update" Clicked="Update_ToDo"/>
+    </StackLayout>
 </ContentPage>

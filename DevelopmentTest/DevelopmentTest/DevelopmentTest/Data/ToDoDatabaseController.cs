@@ -33,6 +33,20 @@ namespace DevelopmentTest.Data
             }
         }
 
+        public bool CheckToDoExistence(int toDoId)
+        {
+            lock (locker)
+            {
+                string query = $"SELECT * FROM ToDoList WHERE Id = '{toDoId}' ";
+                ToDo databaseToDo = (ToDo)database.Query<ToDo>(query).FirstOrDefault();
+
+                if (databaseToDo != null)
+                    return true;
+
+                return false;
+            }
+        }
+
         public bool CreateToDo(string title, int listId, DateTime date, string color)
         {
             lock (locker)
@@ -41,6 +55,22 @@ namespace DevelopmentTest.Data
                 {
                     ToDo toDo = new ToDo() { Title = title, ToDoListID = listId, Date = date, ToDoListColor = color };
                     database.Insert(toDo);
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        public bool UpdateToDo(string title, int id, DateTime date, string color)
+        {
+            lock (locker)
+            {
+                if (CheckToDoExistence(id))
+                {
+
+                    ToDo toDo = new ToDo() { Title = title, Date = date, ToDoListColor = color };
+                    database.Update(toDo);
                     return true;
                 }
 

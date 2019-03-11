@@ -47,7 +47,18 @@ namespace DevelopmentTest.ViewModel
             }
         }
 
+        ToDo selectedToDo;
+        public ToDo SelectedToDo
+        {
 
+            get { return selectedToDo; }
+
+            set
+            {
+                selectedToDo = value;
+                this.Notify("SelectedToDo");
+            }
+        }
 
         ToDoList selectedList;
         public ToDoList SelectedList
