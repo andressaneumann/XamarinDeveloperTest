@@ -16,9 +16,10 @@ namespace DevelopmentTest.View
 
         void Update_ToDo(object sender, System.EventArgs e)
         {
+            var viewCell = (ContentView)sender;
             ToDoDatabaseController td = new ToDoDatabaseController();
 
-            if (td.UpdateToDo(ToDoTitle.Text, datePicker.Date, Picker.PickerSelectedColor))
+            if (td.UpdateToDo(ToDoTitle.Text, , datePicker.Date, Picker.PickerSelectedColor))
             {
 
             }
