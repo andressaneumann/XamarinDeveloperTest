@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using DevelopmentTest.Data;
+using DevelopmentTest.Models;
+using DevelopmentTest.Repeaters;
 using DevelopmentTest.ViewModel;
 using Xamarin.Forms;
 
@@ -16,13 +19,28 @@ namespace DevelopmentTest.View
 
         void Update_ToDo(object sender, System.EventArgs e)
         {
-            var viewCell = (ContentView)sender;
+            var viewCell = (Button)sender;
+            ToDo currentToDo = ((ToDoViewModel)viewCell.BindingContext).SelectedToDo;
             ToDoDatabaseController td = new ToDoDatabaseController();
 
-            if (td.UpdateToDo(ToDoTitle.Text, , datePicker.Date, Picker.PickerSelectedColor))
+            if (td.UpdateToDo(currentToDo))
             {
+                DisplayAlert("Update ToDo", "ToDo updated", "Ok");
+                List<ToDo> toDos = td.GetToDo(((ToDoViewModel)this.BindingContext).SelectedList);
 
+                ((ToDoViewModel)this.BindingContext).ToDos = new ObservableCollection<ToDoRepeater>();
+                foreach (ToDo item in toDos)
+                {
+
+                    ToDoRepeater row = new ToDoRepeater(item.Title, item.ToDoListColor, item.Date, item.Id, item.ToDoListID);
+                    ((ToDoViewModel)this.BindingContext).ToDos.Add(row);
+                }
+
+                Navigation.PopAsync();
             }
+            else
+                DisplayAlert("Update ToDo", "Error", "Ok");
+
         }
     }
 }

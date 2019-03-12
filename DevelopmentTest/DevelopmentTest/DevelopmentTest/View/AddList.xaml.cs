@@ -20,10 +20,12 @@ namespace DevelopmentTest.View
         {
             ToDoListDatabaseController tc = new ToDoListDatabaseController();
 
-            if (tc.CreateToDoList(ToDoTitle.Text))
+            int id = tc.CreateToDoList(ToDoTitle.Text);
+
+            if (id != 0)
             {
                 DisplayAlert("Add list", "List added", "Ok");
-                ToDoList newList = new ToDoList() { Title = ToDoTitle.Text }; 
+                ToDoList newList = new ToDoList() { Title = ToDoTitle.Text, Id = id }; 
                 ((ToDoViewModel)this.BindingContext).ToDoList.Add(newList);
                 Navigation.PopAsync();
             }

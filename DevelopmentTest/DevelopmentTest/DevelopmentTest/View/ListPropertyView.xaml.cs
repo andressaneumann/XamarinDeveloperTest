@@ -36,7 +36,7 @@ namespace DevelopmentTest.View
             foreach (ToDo item in toDos)
             {
 
-                ToDoRepeater row = new ToDoRepeater(item.Title, item.ToDoListColor, item.Date, item.Id);
+                ToDoRepeater row = new ToDoRepeater(item.Title, item.ToDoListColor, item.Date, item.Id, item.ToDoListID);
                 ((ToDoViewModel)this.BindingContext).ToDos.Add(row);
             }
         }
@@ -70,7 +70,8 @@ namespace DevelopmentTest.View
         {
             var viewCell = (ContentView)sender;
             ToDoRepeater currentToDoRepeater = (ToDoRepeater)viewCell.BindingContext;
-            ToDo currentToDo = new ToDo() { Id = currentToDoRepeater.Id, Title = currentToDoRepeater.Title, Date = currentToDoRepeater.Date, ToDoListColor = currentToDoRepeater.BackgroundColor };
+            ToDo currentToDo = new ToDo() { Id = currentToDoRepeater.Id, Title = currentToDoRepeater.Title, Date = currentToDoRepeater.Date, 
+                ToDoListColor = currentToDoRepeater.BackgroundColor, ToDoListID = currentToDoRepeater.ListId };
             ((ToDoViewModel)this.BindingContext).SelectedToDo = currentToDo;
             Navigation.PushAsync(new ToDoPropertyView((ToDoViewModel)this.BindingContext));
         }

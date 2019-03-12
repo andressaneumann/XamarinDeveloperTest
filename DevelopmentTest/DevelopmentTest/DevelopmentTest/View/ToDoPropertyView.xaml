@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.ToDoPropertyView"
              xmlns:local="clr-namespace:DevelopmentTest.View">
     <StackLayout>
-        <Entry x:Name="ToDoTitle" Placeholder="{Binding SelectedToDo.Title}" />
-        <local:ColorPicker x:Name="Picker"/>
+        <Entry x:Name="ToDoTitle" Text="{Binding SelectedToDo.Title}" />
+        <Entry IsVisible="false" x:Name="toDoId" Text="{Binding SelectedToDo.Id}" />
+        <Entry IsVisible="false" x:Name="listToDoId" Text="{Binding SelectedToDo.ToDoListID}" />
+        <local:ColorPicker x:Name="Picker"  />
         <DatePicker x:Name="datePicker" HorizontalOptions="Center"
                     MinimumDate="01/01/2018"
                     MaximumDate="12/31/2019"

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DevelopmentTest.ViewModel;
 using Xamarin.Forms;
 
 namespace DevelopmentTest.View
@@ -66,6 +67,13 @@ namespace DevelopmentTest.View
             string colorName = pickerColorPicker.Items[pickerColorPicker.SelectedIndex];
             this.Color = Color.FromHex(colorDict[colorName]);
             this.PickerSelectedColor = colorDict[colorName];
+
+            if(((ToDoViewModel)this.BindingContext).SelectedToDo != null)
+            {
+                ((ToDoViewModel)this.BindingContext).SelectedToDo.ToDoListColor = colorDict[colorName];
+            }
+
+
         }
     }
 }

@@ -37,7 +37,7 @@ namespace DevelopmentTest.Data
         {
             lock (locker)
             {
-                string query = $"SELECT * FROM ToDoList WHERE Id = '{toDoId}' ";
+                string query = $"SELECT * FROM ToDo WHERE Id = '{toDoId}' ";
                 ToDo databaseToDo = (ToDo)database.Query<ToDo>(query).FirstOrDefault();
 
                 if (databaseToDo != null)
@@ -47,31 +47,44 @@ namespace DevelopmentTest.Data
             }
         }
 
-        public bool CreateToDo(string title, int listId, DateTime date, string color)
+        public int CreateToDo(string title, int listId, DateTime date, string color)
         {
             lock (locker)
             {
                 if (title != "")
                 {
-                    ToDo toDo = new ToDo() { Title = title, ToDoListID = listId, Date = date, ToDoListColor = color };
+                    ToDo toDo = new ToDo() { Title = title,  ToDoListID = listId, Date = date, ToDoListColor = color };
                     database.Insert(toDo);
-                    return true;
+                    return GetLastInsertId();
                 }
 
-                return false;
+                return 0;
             }
         }
 
-        public bool UpdateToDo(string title, int id, DateTime date, string color)
+        public int GetLastInsertId()
+        {
+            return (int)SQLite3.LastInsertRowid(database.Handle);
+        }
+
+
+        public int CreateId()
+        {
+            var table = database.Table<ToDo>();
+            long prodID = table.Max(x => x.Id);
+
+            return (int)prodID+1;
+
+        }
+
+        public bool UpdateToDo(ToDo toDo)
         {
             lock (locker)
             {
-                if (CheckToDoExistence(id))
+                if (CheckToDoExistence(toDo.Id))
                 {
-
-                    ToDo toDo = new ToDo() { Title = title, Date = date, ToDoListColor = color };
-                    database.Update(toDo);
-                    return true;
+                    var count = database.Query<ToDo>($"UPDATE [ToDo] SET Title = '{toDo.Title}', ToDoListColor = '{toDo.ToDoListColor}', Date = '{toDo.Date}' Where Id = {toDo.Id}");
+                    return true; 
                 }
 
                 return false;

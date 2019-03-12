@@ -63,7 +63,7 @@ namespace DevelopmentTest.Data
             }
         }
 
-        public bool CreateToDoList(string title)
+        public int CreateToDoList(string title)
         {
             lock (locker)
             {
@@ -71,11 +71,16 @@ namespace DevelopmentTest.Data
                 {
                     ToDoList list = new ToDoList() { Title = title};
                     database.Insert(list);
-                    return true;
+                    return GetLastInsertId();
                 }
 
-                return false;
+                return 0;
             }
+        }
+
+        public int GetLastInsertId()
+        {
+            return (int)SQLite3.LastInsertRowid(database.Handle);
         }
 
         //public bool UpdateTable(ToDoList todoList)

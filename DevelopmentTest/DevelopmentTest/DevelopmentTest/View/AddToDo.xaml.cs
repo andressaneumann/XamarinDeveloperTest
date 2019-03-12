@@ -28,10 +28,12 @@ namespace DevelopmentTest.View
 
             ToDoList addedList = ((ToDoViewModel)this.BindingContext).SelectedList;
 
-            if (td.CreateToDo(ToDoTitle.Text, addedList.Id, datePicker.Date, Picker.PickerSelectedColor)) 
+            int toDoId = td.CreateToDo(ToDoTitle.Text, addedList.Id, datePicker.Date, Picker.PickerSelectedColor);
+
+            if (toDoId != 0) 
             {
                 DisplayAlert("Add ToDo", "ToDo added", "Ok");
-                ToDoRepeater rep = new ToDoRepeater() { BackgroundColor = Picker.PickerSelectedColor, Date = datePicker.Date, Title = ToDoTitle.Text };
+                ToDoRepeater rep = new ToDoRepeater() { BackgroundColor = Picker.PickerSelectedColor, Date = datePicker.Date, Title = ToDoTitle.Text, Id = toDoId };
                 ((ToDoViewModel)this.BindingContext).ToDos.Add(rep);
                 Navigation.PopAsync();
 
