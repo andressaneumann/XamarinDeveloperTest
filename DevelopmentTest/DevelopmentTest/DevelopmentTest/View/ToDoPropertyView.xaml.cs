@@ -5,6 +5,7 @@ using DevelopmentTest.Data;
 using DevelopmentTest.Models;
 using DevelopmentTest.Repeaters;
 using DevelopmentTest.ViewModel;
+using DevelopmentTest.Converters;
 using Xamarin.Forms;
 
 namespace DevelopmentTest.View
@@ -28,10 +29,12 @@ namespace DevelopmentTest.View
                 DisplayAlert("Update ToDo", "ToDo updated", "Ok");
                 List<ToDo> toDos = td.GetToDo(((ToDoViewModel)this.BindingContext).SelectedList);
 
+                var converter = new DateFormatConverter();
+
+
                 ((ToDoViewModel)this.BindingContext).ToDos = new ObservableCollection<ToDoRepeater>();
                 foreach (ToDo item in toDos)
                 {
-
                     ToDoRepeater row = new ToDoRepeater(item.Title, item.ToDoListColor, item.Date, item.Id, item.ToDoListID);
                     ((ToDoViewModel)this.BindingContext).ToDos.Add(row);
                 }

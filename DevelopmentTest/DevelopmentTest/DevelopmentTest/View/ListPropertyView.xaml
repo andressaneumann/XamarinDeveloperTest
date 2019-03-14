@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DevelopmentTest.View.ListPropertyView" xmlns:local="clr-namespace:DevelopmentTest.Converters" xmlns:ui="clr-namespace:DevelopmentTest.Repeaters">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DevelopmentTest.View.ListPropertyView" xmlns:local="clr-namespace:DevelopmentTest.Converters" 
+             xmlns:ui="clr-namespace:DevelopmentTest.Repeaters" >
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:DateFormatConverter x:Key="DateFormatConverter">
@@ -27,8 +29,9 @@
                                         <ContentView.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="Handle_Tapped" CommandParameter="{Binding .}" />
                                         </ContentView.GestureRecognizers>
+                                        <ia:Checkbox x:Name="AwesomeCheckbox" OutlineColor="Blue" FillColor="Blue" CheckColor="White" Shape="Rectangle" />
                                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                            <Label Text="{Binding Title}"  />
+                                            <Label Text="{Binding Title}" />
                                             <Label Text="{Binding Date, Converter={StaticResource DateFormatConverter}}" />
                                         </StackLayout>
                                     </ContentView>
