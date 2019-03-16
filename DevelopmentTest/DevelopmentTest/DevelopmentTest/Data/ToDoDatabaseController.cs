@@ -95,13 +95,21 @@ namespace DevelopmentTest.Data
         {
             lock (locker)
             {
-                string query = $"SELECT Id FROM ToDo WHERE Id = '{toDo.Id}'";
+                string query = $"SELECT * FROM ToDo WHERE Id = '{toDo.Id}'";
                 ToDo databaseToDo = (ToDo)database.Query<ToDo>(query).FirstOrDefault();
 
 
                 if (databaseToDo != null)
                 {
-                    database.Delete<ToDo>(databaseToDo);
+                    try
+                    {
+                        database.Delete<ToDo>(databaseToDo.Id);
+                    }
+                    catch (Exception e)
+                    {
+                        return false;
+                    }
+                    
                     return true;
                 }
 

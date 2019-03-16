@@ -14,9 +14,7 @@ namespace DevelopmentTest.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WelcomePage : ContentPage
-	{
-
-
+	{        
         private List<ToDoList> results;
 
         public WelcomePage()
@@ -45,8 +43,6 @@ namespace DevelopmentTest.View
         {
             throw new NotImplementedException();
         }
-
-
 
         void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
         {

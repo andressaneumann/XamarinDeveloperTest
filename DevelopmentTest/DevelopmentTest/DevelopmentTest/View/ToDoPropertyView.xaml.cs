@@ -29,9 +29,6 @@ namespace DevelopmentTest.View
                 DisplayAlert("Update ToDo", "ToDo updated", "Ok");
                 List<ToDo> toDos = td.GetToDo(((ToDoViewModel)this.BindingContext).SelectedList);
 
-                var converter = new DateFormatConverter();
-
-
                 ((ToDoViewModel)this.BindingContext).ToDos = new ObservableCollection<ToDoRepeater>();
                 foreach (ToDo item in toDos)
                 {
@@ -44,6 +41,29 @@ namespace DevelopmentTest.View
             else
                 DisplayAlert("Update ToDo", "Error", "Ok");
 
+        }
+
+        private void Delete_ToDo(object sender, EventArgs e)
+        {
+            var viewCell = (Button)sender;
+            ToDo currentToDo = ((ToDoViewModel)viewCell.BindingContext).SelectedToDo;
+            ToDoDatabaseController td = new ToDoDatabaseController();
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                bool answer = await DisplayAlert("Delete ToDo", "Are you sure?", "Yes", "No");
+
+                if (answer)
+                {
+                    if (td.DeleteToDo(((ToDoViewModel)this.BindingContext).SelectedToDo))
+                    {
+                        await DisplayAlert("Delete ToDo", "ToDo Deleted", "Ok");
+                        await Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));
+                    }
+                    else
+                        await DisplayAlert("Delete ToDo", "Error", "Ok");
+                }
+            });
         }
     }
 }

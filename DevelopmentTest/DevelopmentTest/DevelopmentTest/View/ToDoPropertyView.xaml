@@ -11,5 +11,6 @@
                     MaximumDate="12/31/2019"
                     Date="02/26/2018"/>
         <Button Text="Update" Clicked="Update_ToDo"/>
+        <Button Text="Delete" Clicked="Delete_ToDo"/>
     </StackLayout>
 </ContentPage>

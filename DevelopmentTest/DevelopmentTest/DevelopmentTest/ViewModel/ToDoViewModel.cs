@@ -47,6 +47,19 @@ namespace DevelopmentTest.ViewModel
             }
         }
 
+        ObservableCollection<ToDo> toDo;
+        public ObservableCollection<ToDo> ToDo
+        {
+
+            get { return toDo; }
+
+            set
+            {
+                toDo = value;
+                this.Notify("ToDo");
+            }
+        }
+
         ToDo selectedToDo;
         public ToDo SelectedToDo
         {
