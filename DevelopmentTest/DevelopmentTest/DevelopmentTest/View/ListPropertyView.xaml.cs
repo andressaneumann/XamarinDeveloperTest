@@ -30,7 +30,7 @@ namespace DevelopmentTest.View
             this.BindingContext = viewModel;
             ToDoDatabaseController td = new ToDoDatabaseController();
 
-            List<ToDo> toDos = td.GetToDo(((ToDoViewModel)this.BindingContext).SelectedList);
+            List<ToDo> toDos = td.GetNotCheckedToDos(((ToDoViewModel)this.BindingContext).SelectedList);
 
             ((ToDoViewModel)this.BindingContext).ToDos = new ObservableCollection<ToDoRepeater>();
             foreach (ToDo item in toDos)
@@ -74,6 +74,34 @@ namespace DevelopmentTest.View
                 ToDoListColor = currentToDoRepeater.BackgroundColor, ToDoListID = currentToDoRepeater.ListId };
             ((ToDoViewModel)this.BindingContext).SelectedToDo = currentToDo;
             Navigation.PushAsync(new ToDoPropertyView((ToDoViewModel)this.BindingContext));
+        }
+
+        private void CheckBox_CheckedChanged(object sender, XLabs.EventArgs<bool> e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                
+                ToDoDatabaseController td = new ToDoDatabaseController();
+                bool answer = await DisplayAlert("Task finished", "Have you finish the task?", "Yes", "No");
+
+                var viewCell = (ContentView)sender;
+                ToDoRepeater currentToDoRepeater = (ToDoRepeater)viewCell.BindingContext;
+                ToDo currentToDo = new ToDo()
+                {
+                    Id = currentToDoRepeater.Id,
+                    Title = currentToDoRepeater.Title,
+                    Date = currentToDoRepeater.Date,
+                    ToDoListColor = currentToDoRepeater.BackgroundColor,
+                    ToDoListID = currentToDoRepeater.ListId,
+                    IsChecked = currentToDoRepeater.IsChecked
+                };
+
+                if (answer) {
+                    currentToDo.IsChecked = true;
+                    Navigation.RemovePage(this);
+                    await Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));
+                }
+            });
         }
     }
 }

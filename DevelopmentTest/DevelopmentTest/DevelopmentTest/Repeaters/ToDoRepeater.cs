@@ -9,6 +9,7 @@ namespace DevelopmentTest.Repeaters
         public DateTime Date { get; set; }
         public int Id { get; set; }
         public int ListId { get; set; }
+        public bool IsChecked { get; set; }
 
         public ToDoRepeater()
         {

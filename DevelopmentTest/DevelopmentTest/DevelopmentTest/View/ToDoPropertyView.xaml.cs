@@ -59,6 +59,7 @@ namespace DevelopmentTest.View
                     {
                         await DisplayAlert("Delete ToDo", "ToDo Deleted", "Ok");
                         await Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));
+                        Navigation.RemovePage(this);
                     }
                     else
                         await DisplayAlert("Delete ToDo", "Error", "Ok");

@@ -33,6 +33,28 @@ namespace DevelopmentTest.Data
             }
         }
 
+        public List<ToDo> GetNotCheckedToDos(ToDoList list)
+        {
+            string query = $"SELECT * FROM ToDo WHERE ToDoListID = '{list.Id} AND IsChecked!=1 ";
+            List<ToDo> databaseToDo = database.Query<ToDo>(query).ToList();
+
+            if (databaseToDo != null)
+                return databaseToDo;
+
+            return null;
+        }
+
+        public List<ToDo> GetCheckedToDos(ToDoList list)
+        {
+            string query = $"SELECT * FROM ToDo WHERE ToDoListID = '{list.Id} AND IsChecked = '{true}' ";
+            List<ToDo> databaseToDo = database.Query<ToDo>(query).ToList();
+
+            if (databaseToDo != null)
+                return databaseToDo;
+
+            return null;
+        }
+
         public bool CheckToDoExistence(int toDoId)
         {
             lock (locker)

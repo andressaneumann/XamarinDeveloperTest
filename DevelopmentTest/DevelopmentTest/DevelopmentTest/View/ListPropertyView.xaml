@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="DevelopmentTest.View.ListPropertyView" xmlns:local="clr-namespace:DevelopmentTest.Converters" 
+             x:Class="DevelopmentTest.View.ListPropertyView" xmlns:local="clr-namespace:DevelopmentTest.Converters"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              xmlns:ui="clr-namespace:DevelopmentTest.Repeaters" >
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -10,7 +11,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
+            <StackLayout >
                 <Label Text="{Binding SelectedList.Title}" />
                 <!-- REPEATER IMPLEMENTATION -->
                 <ui:Repeater x:Name="MainRepeater" ItemsSource="{Binding ToDos, Mode=TwoWay}">
@@ -25,12 +26,12 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <ContentView Grid.Row="0" Grid.Column="0">
+                                    <ContentView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                         <ContentView.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="Handle_Tapped" CommandParameter="{Binding .}" />
                                         </ContentView.GestureRecognizers>
                                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                            <Label Text="{Binding Title}" />
+                                            <controls:CheckBox DefaultText="{Binding Title}" HorizontalOptions="FillAndExpand" CheckedChanged="CheckBox_CheckedChanged" />
                                             <Label Text="{Binding Date, Converter={StaticResource DateFormatConverter}}" />
                                         </StackLayout>
                                     </ContentView>
