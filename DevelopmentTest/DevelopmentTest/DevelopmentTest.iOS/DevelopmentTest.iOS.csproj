@@ -178,8 +178,14 @@
   <ItemGroup />
   <ItemGroup>
     <BundleResource Include="Resources\checkboxChecked.png" />
+    <BundleResource Include="Images\Checkbox\checked_checkbox.png" />
+    <BundleResource Include="Images\Checkbox\unchecked_checkbox.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\checkboxNotChecked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Images\Checkbox\" />
   </ItemGroup>
 </Project>

@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using DevelopmentTest.Repeaters;
 using System.Threading.Tasks;
 using DevelopmentTest.ViewModel;
+using IntelliAbb.Xamarin.Controls;
+using XLabs.Forms.Controls;
 
 namespace DevelopmentTest.View
 {
@@ -84,7 +86,7 @@ namespace DevelopmentTest.View
                 ToDoDatabaseController td = new ToDoDatabaseController();
                 bool answer = await DisplayAlert("Task finished", "Have you finish the task?", "Yes", "No");
 
-                var viewCell = (ContentView)sender;
+                var viewCell = (CheckBox)sender;
                 ToDoRepeater currentToDoRepeater = (ToDoRepeater)viewCell.BindingContext;
                 ToDo currentToDo = new ToDo()
                 {
@@ -97,9 +99,9 @@ namespace DevelopmentTest.View
                 };
 
                 if (answer) {
-                    currentToDo.IsChecked = true;
-                    Navigation.RemovePage(this);
+                    currentToDoRepeater.IsChecked = true;
                     await Navigation.PushAsync(new ListPropertyView((ToDoViewModel)this.BindingContext));
+
                 }
             });
         }

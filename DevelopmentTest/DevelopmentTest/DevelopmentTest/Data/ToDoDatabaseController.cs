@@ -35,7 +35,7 @@ namespace DevelopmentTest.Data
 
         public List<ToDo> GetNotCheckedToDos(ToDoList list)
         {
-            string query = $"SELECT * FROM ToDo WHERE ToDoListID = '{list.Id} AND IsChecked!=1 ";
+            string query = $"SELECT * FROM ToDo WHERE ToDoListID = {list.Id} AND IsChecked!=1 ";
             List<ToDo> databaseToDo = database.Query<ToDo>(query).ToList();
 
             if (databaseToDo != null)
@@ -46,7 +46,7 @@ namespace DevelopmentTest.Data
 
         public List<ToDo> GetCheckedToDos(ToDoList list)
         {
-            string query = $"SELECT * FROM ToDo WHERE ToDoListID = '{list.Id} AND IsChecked = '{true}' ";
+            string query = $"SELECT * FROM ToDo WHERE ToDoListID = {list.Id} && IsChecked == 0  ";
             List<ToDo> databaseToDo = database.Query<ToDo>(query).ToList();
 
             if (databaseToDo != null)
